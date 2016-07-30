@@ -1,0 +1,54 @@
+{
+  "name": "es6-data-structures",
+  "homepage": "https://github.com/vivekimsit/es6-data-structures#readme",
+  "version": "1.0.0",
+  "description": "ES6/ES2015 implementations of well know data structures.",
+  "author": "Vivek Poddar",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "directories": {
+    "src": "./src",
+    "test": "./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekimsit/es6-data-structures.git"
+  },
+  "keywords": [
+    "es6",
+    "es2015",
+    "data-structure",
+    "collection",
+    "stack"
+  ],
+  "bugs": {
+    "url": "https://github.com/vivekimsit/es6-data-structures/issues"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "modules": true
+      }
+    },
+    "env": {
+      "mocha": true,
+      "node": true
+    }
+  },
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-runtime": "^6.9.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^3.1.1",
+    "mocha": "^2.5.3"
+  }
+}
