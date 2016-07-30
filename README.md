@@ -3,6 +3,6 @@ Implementation of various well known data structure in ES6.
 
 ### TODO
 
-- [ ] Stack
+- [x] Stack
 - [ ] Queue
 - [ ] Priority Queue
