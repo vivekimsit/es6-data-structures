@@ -1,4 +1,4 @@
-import {isDefAndNotNull, isIterable} from "./utils";
+import {isDefAndNotNull, isIterable} from './utils';
 
 function *reverseArrayGenerator(arr) {
   let i = arr.length;
@@ -7,7 +7,7 @@ function *reverseArrayGenerator(arr) {
   }
 }
 
-const data = Symbol("data");
+const data = Symbol('data');
 
 export default class {
   constructor(iterable) {

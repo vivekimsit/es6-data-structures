@@ -7,6 +7,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "pretest": "node_modules/.bin/eslint src/*.js test/*.js",
     "test": "node_modules/.bin/mocha"
   },
   "directories": {
@@ -38,6 +39,11 @@
     "env": {
       "mocha": true,
       "node": true
+    },
+    "rules": {
+      "quotes": [2, "single"],
+      "eqeqeq": 0,
+      "strict": 0
     }
   },
   "dependencies": {
@@ -48,7 +54,7 @@
     "babel-core": "^6.11.4",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
-    "eslint": "^3.1.1",
+    "eslint": "^3.2.0",
     "mocha": "^2.5.3"
   }
 }

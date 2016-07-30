@@ -1,9 +1,0 @@
-env:
-    es6: true
-ecmaFeatures:
-    modules: true
-rules:
-    array-bracket-spacing: [2, "never"]
-    indent: 2
-    brace-style: 2
-    prefer-const: 2
