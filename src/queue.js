@@ -1,4 +1,4 @@
-import {isDefAndNotNull, isIterable} from './utils';
+import {isIterable} from './utils';
 
 function *arrayGenerator(arr) {
   let i = 0;
@@ -17,7 +17,7 @@ const data = Symbol('data');
 export default class {
   constructor(iterable) {
     this[data] = [];
-    if (iterable) {
+    if (isIterable(iterable)) {
       for (const i of iterable) {
         this.enqueue(i);
       }
@@ -25,11 +25,17 @@ export default class {
   }
 
   peek() {
+    // TODO(isEmpty)
     return head(this[data]);
   }
 
   enqueue(item) {
     this[data].push(item);
+  }
+
+  dequeue() {
+    // TODO(isEmpty)
+    this[data].shift();
   }
 
   isEmpty() {
