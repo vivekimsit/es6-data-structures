@@ -49,4 +49,8 @@ export default class {
   [Symbol.iterator]() {
     return arrayGenerator(this[data]);
   }
+
+  toString() {
+	return JSON.stringify(this[data]);
+  }
 }
