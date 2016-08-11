@@ -3,7 +3,7 @@ import {isIterable} from './utils';
 function *arrayGenerator(arr) {
   let i = 0;
   let l = arr.length;
-  while(i < 0) {
+  while(i < l) {
     yield arr[i++];
   }
 }
@@ -25,7 +25,7 @@ export default class {
   }
 
   peek() {
-    // TODO(isEmpty)
+	if (this.isEmpty()) throw new Error('Queue underflow');
     return head(this[data]);
   }
 
@@ -34,7 +34,7 @@ export default class {
   }
 
   dequeue() {
-    // TODO(isEmpty)
+	if (this.isEmpty()) throw new Error('Queue underflow');
     this[data].shift();
   }
 
@@ -44,5 +44,9 @@ export default class {
 
   size() {
     return this[data].length;
+  }
+
+  [Symbol.iterator]() {
+    return arrayGenerator(this[data]);
   }
 }

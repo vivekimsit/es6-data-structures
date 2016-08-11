@@ -30,6 +30,12 @@ suite('Queue', () => {
   });
 
   test('iterator', () => {
+    const q = new Queue([1, 2, 3]);
+    let i = 1;
+    for(const item of q) {
+      equal(item, i);
+      i++;
+    }
   });
 });
 
