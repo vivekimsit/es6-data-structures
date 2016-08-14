@@ -13,7 +13,7 @@ class PQ {
     this.swim(this[N]);
   }
 
-  max() {
+  get() {
     if (this.isEmpty()) {
       throw new Error('PQ underflow');
     }

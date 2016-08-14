@@ -18,6 +18,7 @@ suite('Max PQ', () => {
 		q.insert(3);
 		q.insert(2);
 		q.insert(5);
+    equal(q.get(), 5);
     equal(q.size(), 3);
     equal(q.del(), 5);
     equal(q.size(), 2);
