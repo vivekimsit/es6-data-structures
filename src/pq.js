@@ -10,14 +10,14 @@ class PQ {
 
   insert(item) {
     this[data][++this[N]] = item;
-    this.swim(this[N]);
+    swim(this[data], this.comparator, this[N]);
   }
 
   get() {
     if (this.isEmpty()) {
       throw new Error('PQ underflow');
     }
-    return this[data][1]; //  use slice or splice or shift?
+    return this[data][1];
   }
 
   del() {
@@ -25,8 +25,8 @@ class PQ {
       throw new Error('PQ underflow');
     }
     let max = this[data][1];
-    this.swap(1, this[N]--);
-    this.sink(1);
+    swap(this[data], 1, this[N]--);
+    sink(this[data], this.comparator, this[N], 1);
     // remove last element from the array.
     this[data].pop();
     return max;
@@ -38,46 +38,6 @@ class PQ {
 
   isEmpty() {
     return this.size() === 0;
-  }
-
-  // Heap specific helper functions
-
-  // Maintains the heap invariant while
-  // removing an item from the heap.
-  sink(k) {
-		let heap = this[data];
-    while (2 * k <= this[N]) {
-      let j = 2 * k;
-      if (j < this[N] /*Bound checking*/ &&
-          this.comparator(heap[j], heap[j+1])) {
-        j++;
-      }
-      if (!this.comparator(heap[k], heap[j])) {
-        break;
-      }
-      this.swap(k, j);
-      k = j;
-    }
-  }
-
-  // Maintains the heap invariant while
-  // inserting an item in the heap.
-  swim(k) {
-    let parent = Math.floor(k / 2);
-		let heap = this[data];
-    while(k > 1 /* we are dealing with array here*/ &&
-        this.comparator(heap[parent], heap[k])) {
-      this.swap(k, parent);
-      k = parent;
-      parent = Math.floor(k / 2);
-    }
-  }
-
-  swap(i, j) {
-		let heap = this[data];
-    let temp = heap[i];
-    heap[i] = heap[j];
-    heap[j] = temp;
   }
 
   static defaultComparator(a, b) {
@@ -98,4 +58,41 @@ export function minPQ() {
 	return new PQ((a, b) => {
 		return a > b;
 	});
+}
+
+// Heap specific helper functions
+
+// Maintains the heap invariant while
+// removing an item from the heap.
+function sink(heap, compareFn, size, k) {
+	while (2 * k <= size) {
+		let j = 2 * k;
+		if (j < size /*Bound checking*/ &&
+				compareFn(heap[j], heap[j+1])) {
+					j++;
+				}
+		if (!compareFn(heap[k], heap[j])) {
+			break;
+		}
+		swap(heap, k, j);
+		k = j;
+	}
+}
+
+// Maintains the heap invariant while
+// inserting an item in the heap.
+function swim(heap, compareFn, k) {
+	let parent = Math.floor(k / 2);
+	while(k > 1 /* we are dealing with array here*/ &&
+			compareFn(heap[parent], heap[k])) {
+		swap(heap, k, parent);
+		k = parent;
+		parent = Math.floor(k / 2);
+	}
+}
+
+function swap(heap, i, j) {
+	let temp = heap[i];
+	heap[i] = heap[j];
+	heap[j] = temp;
 }
