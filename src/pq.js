@@ -1,5 +1,5 @@
-const data = Symbol('PQ data');
-const N    = Symbol('PQ length');
+const data = Symbol('PQ data'),
+         N = Symbol('PQ length');
 
 class PQ {
   constructor(comparator) {
@@ -86,10 +86,10 @@ class PQ {
   }
 }
 
-export function minPQ() {
+export function maxPQ() {
 	return new PQ();
 }
 
-export function maxPQ() {
-
+export function minPQ() {
+	return new PQ((a, b) => a > b);
 }
