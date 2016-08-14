@@ -28,7 +28,7 @@ class PQ {
     this.swap(1, this[N]--);
     this.sink(1);
     // remove last element from the array.
-    this[data].splice(-1, 1);
+    this[data].pop();
     return max;
   }
 
@@ -45,13 +45,14 @@ class PQ {
   // Maintains the heap invariant while
   // removing an item from the heap.
   sink(k) {
-    while (2*k <= this[N]) {
+		let heap = this[data];
+    while (2 * k <= this[N]) {
       let j = 2 * k;
       if (j < this[N] /*Bound checking*/ &&
-          this.comparator(j, j+1)) {
+          this.comparator(heap[j], heap[j+1])) {
         j++;
       }
-      if (!this.comparator(k, j)) {
+      if (!this.comparator(heap[k], heap[j])) {
         break;
       }
       this.swap(k, j);
@@ -63,17 +64,20 @@ class PQ {
   // inserting an item in the heap.
   swim(k) {
     let parent = Math.floor(k / 2);
+		let heap = this[data];
     while(k > 1 /* we are dealing with array here*/ &&
-        this.comparator(parent, k)) {
+        this.comparator(heap[parent], heap[k])) {
       this.swap(k, parent);
       k = parent;
+      parent = Math.floor(k / 2);
     }
   }
 
   swap(i, j) {
-    let temp = this[data][i];
-    this[data][i] = this[data][j];
-    this[data][j] = temp;
+		let heap = this[data];
+    let temp = heap[i];
+    heap[i] = heap[j];
+    heap[j] = temp;
   }
 
   static defaultComparator(a, b) {
@@ -91,5 +95,7 @@ export function maxPQ() {
 }
 
 export function minPQ() {
-	return new PQ((a, b) => a > b);
+	return new PQ((a, b) => {
+		return a > b;
+	});
 }
