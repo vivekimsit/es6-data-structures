@@ -35,4 +35,26 @@ suite('MinStack', () => {
 			equal(s.min(), -1);
 		});
 	});
+
+	suite('with Iterator', () => {
+
+		test('size', () => {
+			const s = new MinStack([1, 2, 3]);
+			equal(s.size(), 3);
+		});
+
+		test('unit stack', () => {
+			const s = new MinStack([1]);
+			equal(s.min(), 1);
+		});
+
+		test('min value', () => {
+			const s = new MinStack([3, 2, -1, -3, -2]);
+			equal(s.min(), -3);
+			s.pop();
+			equal(s.min(), -3);
+			s.pop();
+			equal(s.min(), -1);
+		});
+	});
 });
