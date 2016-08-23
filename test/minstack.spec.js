@@ -56,5 +56,10 @@ suite('MinStack', () => {
 			s.pop();
 			equal(s.min(), -1);
 		});
+
+		test('serialize', () => {
+			const s = new MinStack([3, 2, -1, -3, -2]);
+			equal(s.toString(), '"-3 -1 2 3"');
+		});
 	});
 });
