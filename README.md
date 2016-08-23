@@ -6,7 +6,7 @@ Implementation of various well known data structure in ES6.
 - [x] Stack
 - [x] Queue
 - [x] Priority Queue
-- [ ] Min Stack
+- [x] Min Stack
 
 ### Test
 
