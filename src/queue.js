@@ -25,7 +25,7 @@ export default class {
   }
 
   peek() {
-	if (this.isEmpty()) throw new Error('Queue underflow');
+		if (this.isEmpty()) throw new Error('Queue underflow');
     return head(this[data]);
   }
 
@@ -34,7 +34,7 @@ export default class {
   }
 
   dequeue() {
-	if (this.isEmpty()) throw new Error('Queue underflow');
+		if (this.isEmpty()) throw new Error('Queue underflow');
     this[data].shift();
   }
 
@@ -51,6 +51,6 @@ export default class {
   }
 
   toString() {
-	return JSON.stringify(this[data]);
+		return JSON.stringify(this[data]);
   }
 }
